@@ -51,7 +51,7 @@ def login(request):
     session['user_id'] = user.id
     session.save()
     
-    return redirect('/job')  
+    return redirect('/tp')  
 # The above line's redirect needs to change   
 
 
