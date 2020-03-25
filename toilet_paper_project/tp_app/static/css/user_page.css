@@ -1,0 +1,11 @@
+.bg{
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fimgur.com%2Ft%2Fwheres_waldo%2FuPUC9kd&psig=AOvVaw3nwf1X33vlt6AO_fV0qtyC&ust=1585251126300000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOiiluiutugCFQAAAAAdAAAAABAD');
+
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
