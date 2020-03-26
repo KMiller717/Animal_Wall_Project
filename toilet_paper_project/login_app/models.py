@@ -38,6 +38,7 @@ class User(models.Model):
     last_name = models.CharField (max_length=55)
     email = models.CharField(max_length=55)
     password = models.CharField(max_length=100)
+    user_image =models.ImageField(upload_to='uploads/', default='default.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()

@@ -1,10 +1,23 @@
 h1 {
-    display: inline-block;
+    text-align: left;
     color: red;
+    font: bold;
+    padding-top: 45px;
+    margin-bottom: -20px;
+
 }
 
-.form {
-    display: inline-block;
-    width: 500px;
-    vertical-align: top;
+.form * {
+    color: red;
+    justify-content: left;
+    padding-left: 20px;
+}
+
+
+
+
+body {
+    background-image: url("https://lh3.googleusercontent.com/gnm2QHdNqkiUF0LZatOZAUlXS7F335xUPX4ZQrmExkAuHFyDPpbIrC2Bzkr5VdKwZddrIz5FIn8=w640-h400-e365");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
