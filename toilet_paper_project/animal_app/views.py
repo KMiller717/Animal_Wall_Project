@@ -6,7 +6,10 @@ from login_app.models import User
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 17be702278b83c50e2842ed809f0284bea9bcbc7
 def user_page(request, request_session_user_id) :
     context ={
         'user': User.objects.get(id=request.session['user_id']),
@@ -27,9 +30,12 @@ def logout(request):
     del request.session['user_email']
     return redirect ('/')
 
-# def view_wall(request):
-#     return render(request, "animal_wall.html")
 
+
+def view_wall(request):
+    return redirect('/wall')
+
+# Create your views here.
 
 def video_wall(request):
     context= {
@@ -64,3 +70,7 @@ def post_comment(request, message_id):
     print(comment)
 
     return redirect('/wall')
+<<<<<<< HEAD
+=======
+
+>>>>>>> 17be702278b83c50e2842ed809f0284bea9bcbc7
