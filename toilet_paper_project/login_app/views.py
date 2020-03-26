@@ -51,7 +51,7 @@ def login(request):
     session['user_id'] = user.id
     session.save()
     
-    return redirect('/tp')  
+    return redirect('/wall')  
 # The above line's redirect needs to change   
 
 

@@ -1,0 +1,39 @@
+from django.shortcuts import render, redirect 
+from .models import Message, Comment
+from login_app.models import User
+
+# Create your views here.
+
+def video_wall(request):
+    context= {
+        'all_messages': Message.objects.all()
+    }
+    return render(request, "animal_wall.html", context)
+
+def post_video(request):
+    
+    user = User.objects.get(id=request.session['user_id'])
+    video = request.POST['video'][-11:]
+    print(video)
+    message = Message.objects.create(tp_video=video, description=request.POST['description'], user=user)
+
+    return redirect('/wall')
+
+def delete_post(request, message_id):
+    post_delete = Message.objects.get(id=message_id)
+    post_delete.delete()
+
+    return redirect('/wall')
+
+def post_comment(request, message_id):
+    
+    user = User.objects.get(id=request.session['user_id'])
+    message = Message.objects.get(id=message_id)
+    comment = Comment.objects.create(
+        content=request.POST['comment'], 
+        message=message,
+        user=user
+    )
+    print(comment)
+
+    return redirect('/wall')
