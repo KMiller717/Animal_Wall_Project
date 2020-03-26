@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}   
+    <link rel="stylesheet" href="{% static 'css/user_page.css' %}">
+</head>
+
+<body>
+
+    <div id ="user_info">
+        <h2>Welcome back {{user.first_name}}</h2>
+        <a href= '/wall/logout'> logout</a> : <a href= '/wall/'> back to wall</a> <br>
+        <img id="user_image" src='{{user.user_image.url}}'>
+        <form action= '/wall/upload' method = "POST" enctype="multipart/form-data"> 
+            {% csrf_token %} 
+        <input type='file' accept='image/*' name='user_image'>
+        <input type='submit' value='add/change profile pic'>
+        </form>
+
+        <p> contact me at {{user.email}}</p>
+    </div>
+    <br>
+
+    <div id= "user_content">
+        <p> Here we will display users recent videos or liked videos</p>
+        {%for messages in messages%}
+        <p> {{message.tp_video}}</p>
+        {%endfor%}
+
+    </div>
+
+<!-- recent messages posted by user. -->
+
+
+
+
+
+
+
+
+</body>
+
+</html>
