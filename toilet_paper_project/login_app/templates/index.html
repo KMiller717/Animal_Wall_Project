@@ -10,12 +10,12 @@
 </head>
 
 <body>
-    <h1>Welcome! Sign in to manage your jobs! </h1><br>
+    <h1>Welcome! Sign in to view your Toilet Paper Wall! </h1><br>
     {% for message in messages %}
     <p>{{message}}</p>
     {% endfor %}
     <div class='form'>
-        <h1>Registration</h1>
+        <h1>Registration</h1><br>
         <form action='/register' method='post'>
             
             {% csrf_token %}
@@ -24,18 +24,18 @@
             Last Name:<input type='text' name ='last_name'><br>
             Email: <input type='text' name='email'><br>
             Password: <input type='password' name='password'><br>
-            Confirm Password: <input type='password' name='confirm_password'><br>
+            Confirm Password: <input type='password' name='confirm_password'><br><br>
             
             <input type='submit' value="Register">
             
         </form>
     </div>
     <div class='form'>
-        <h1>Login</h1>
+        <h1>Login</h1><br>
         <form action='/login' method='post'>
             {% csrf_token %}
             Email: <input type='text' name='email'><br>
-            Password: <input type='password' name='password'><br>
+            Password: <input type='password' name='password'><br><br>
             <input type='submit' value="Login">
         </form>
     </div>

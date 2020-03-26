@@ -1,12 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="{% static 'css/tp.css' %}"> -->
 </head>
 <body>
+    <div class="d-flex justify-content-between">
+        <h1>Hello, {{request.session.user_first_name}}</h1>
+        <a href='/logout'>Log Out</a>
+    </div>
     <h1>Hello, {{request.session.user_first_name}}</h1> <a href ='/wall/{{request.session.user_id}}'> your page</a> 
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+
+    <h4>Strolling through this pandemic like....</h4>
+    
+    <iframe src="https://giphy.com/embed/aMoFRURgBuD3a" width="480" height="250" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/ellen-uggie-degeneres-aMoFRURgBuD3a"></a></p><br>
+
+
+    
+    <h3>Share your favorite YouTube funny animal video!!</h3>
+
+    <form action='/wall/video' method = 'POST'>  <!--Form to post video-->
+        {% csrf_token %} 
+    Video url:<input type='text' name='video'>
+    Description: <input type='text' name ='description'>
+    <input type='submit' value='Post Video'><br>
+    </form>
+
+
+    {% for message in all_messages %}  <!--Start of for loop-->
+    {% if request.session.user_id == message.user.id %}
+    <a href='/wall/{{message.id}}/delete'>Delete</a><br>  <!--Delete messgae-->
+    {% endif %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{message.tp_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+    <!-- This is the message posting -->
+    
+    <br>
+
+        {% for comment in message.comments.all %}
+        {{comment.content}} <br>   <!--This is the comment posting-->
+        {% endfor %}
+
+    <form action='/wall/{{message.id}}/comment' method='POST'> <!--Form to post comment-->
+        {% csrf_token %} 
+    Comment on Video: <input type='text' name='comment'>
+    <input type='submit' value='Post Comment'>  
+    </form>
+
+    
+    {% endfor %}  <!--End of Message for loop-->
+
+    
+    
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
 
 </body>
 </html>
