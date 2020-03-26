@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="{% static 'css/tp.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/tp.css' %}">
 </head>
 <body>
     <div class="d-flex justify-content-between">
-        <h1>Hello, {{request.session.user_first_name}}</h1>
+        <h1>Hello, {{request.session.user_first_name}}</h1><br>
+        <a href="/wall/{{request.session.user_id}}"> Your Page</a>
         <a href='/logout'>Log Out</a>
     </div>
     <h1>Hello, {{request.session.user_first_name}}</h1> <a href ='/wall/{{request.session.user_id}}'> your page</a> 
