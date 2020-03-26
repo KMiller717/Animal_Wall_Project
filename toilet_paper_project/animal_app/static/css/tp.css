@@ -1,0 +1,8 @@
+body {
+    background-color: lightgray;
+}
+
+header * {
+    display: inline-block;
+    width: auto;
+}
