@@ -48,7 +48,7 @@
         </div>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 align-items-center">
                 <form action='/wall/video' method='POST'>
                     <!--Form to post video-->
                     {% csrf_token %}
@@ -60,14 +60,22 @@
         </div>
 
 
-        {% for message in all_messages %}
-        <!--Start of for loop-->
-        {% if request.session.user_id == message.user.id %}
-        <a href='/wall/{{message.id}}/delete'>Delete</a><br>
-        <!--Delete messgae-->
-        {% endif %}
+       
         <div class="row">
-            <div class='col-6'>
+            <div class='col-sm'>{% for url in urls %}
+                <div class="mdl-card__media">
+                    {% autoescape off %}{% tweet_tags url %}{% endautoescape %}
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                {% endfor %}
+            </div>
+            <div class='col-sm'>
+                {% for message in all_messages %}
+                <!--Start of for loop-->
+                {% if request.session.user_id == message.user.id %}
+                <a href='/wall/{{message.id}}/delete'>Delete</a><br>
+                <!--Delete messgae-->
+                {% endif %}
                 <iframe width="490" height="315" src="https://www.youtube.com/embed/{{message.tp_video}}"
                     frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
@@ -75,7 +83,7 @@
 
                 <!-- This is the message posting -->
 
-                <br>
+
 
                 {% for comment in message.comments.all %}
                 {{comment.content}} <br>
@@ -92,13 +100,7 @@
                 {% endfor %}
             </div>
             <!--End of Message for loop-->
-            <div class='col-6'>{% for url in urls %}
-                <div class="mdl-card__media">
-                    {% autoescape off %}{% tweet_tags url %}{% endautoescape %}
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
-                {% endfor %}
-            </div>
+
         </div>
 
 

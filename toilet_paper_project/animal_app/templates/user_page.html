@@ -21,7 +21,7 @@
     </div>
     <br>
     <div id= "user_content">
-        <p> Here we will display users recent videos or liked videos</p>
+        <p id='title'> Below are your awesome videos!!!</p>
         {% for messages in user.messages.all %}  <!--Start of for loop-->
         {% if request.session.user_id == message.user.id %}
         <a href='/wall/{{message.id}}/delete'>Delete</a><br>  <!--Delete messgae-->
