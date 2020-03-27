@@ -78,7 +78,7 @@
                 {% endif %}
                 <iframe width="490" height="315" src="https://www.youtube.com/embed/{{message.tp_video}}"
                     frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                    allowfullscreen></iframe><br>
 
 
                 <!-- This is the message posting -->
@@ -86,7 +86,7 @@
 
 
                 {% for comment in message.comments.all %}
-                {{comment.content}} <br>
+                {{comment.user.first_name}}: {{comment.content}} <br>
                 <!--This is the comment posting-->
                 {% endfor %}
 
