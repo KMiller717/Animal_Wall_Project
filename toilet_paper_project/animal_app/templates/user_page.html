@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +7,7 @@
     {% load static %}   
     <link rel="stylesheet" href="{% static 'css/user_page.css' %}">
 </head>
-
 <body>
-
     <div id ="user_info">
         <h2>Welcome back {{user.first_name}}</h2>
         <a href= '/wall/logout'> logout</a> : <a href= '/wall/'> back to wall</a> <br>
@@ -20,28 +17,16 @@
         <input type='file' accept='image/*' name='user_image'>
         <input type='submit' value='add/change profile pic'>
         </form>
-
         <p> contact me at {{user.email}}</p>
     </div>
     <br>
-
     <div id= "user_content">
         <p> Here we will display users recent videos or liked videos</p>
-        {%for messages in messages%}
-        <p> {{message.tp_video}}</p>
+        {% for messages in user.messages.all %}  <!--Start of for loop-->
+        {% if request.session.user_id == message.user.id %}
+        <a href='/wall/{{message.id}}/delete'>Delete</a><br>  <!--Delete messgae-->
+        {% endif %}
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{messages.tp_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
         {%endfor%}
-
     </div>
-
 <!-- recent messages posted by user. -->
-
-
-
-
-
-
-
-
-</body>
-
-</html>

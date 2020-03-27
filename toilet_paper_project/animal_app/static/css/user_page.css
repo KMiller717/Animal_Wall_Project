@@ -1,34 +1,31 @@
 #user_info{
-font-family: arial, sans-serif;
-border-collapse: collapse;
-width: 25%;
-border: 1px solid #dddddd;
-text-align: left;
-padding: 8px;
-background-color: whitesmoke;
-opacity: .9;
-}
-
-body {
-    background-image: url("https://cdn.vox-cdn.com/thumbor/9aLOHJFMqb9vJ_Pa0hIvLgxYDrU=/0x0:1000x666/1120x0/filters:focal(0x0:1000x666):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/12480153/laPn9whjTmytZYt4B6xM_main_dog_pic.0.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-
-
-}
-#user_content{
-font-family: arial, sans-serif;
-border-collapse: collapse;
-width: 40%;
-border: 1px solid #dddddd;
-text-align: left;
-padding: 8px;
-background-color: whitesmoke;
-opacity: .9;
-}
-#user_image{
-    max-width: 250px;
-    height: 200px;
-    
-}
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 25%;
+    border: 1px solid #DDDDDD;
+    text-align: left;
+    padding: 8px;
+    background-color: whitesmoke;
+    opacity: .9;
+    }
+    body {
+        background-image: url("https://cdn.vox-cdn.com/thumbor/9aLOHJFMqb9vJ_Pa0hIvLgxYDrU=/0x0:1000x666/1120x0/filters:focal(0x0:1000x666):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/12480153/laPn9whjTmytZYt4B6xM_main_dog_pic.0.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+    }
+    #user_content{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    border: 1px solid #DDDDDD;
+    text-align: left;
+    padding: 8px;
+    background-color: whitesmoke;
+    opacity: .9;
+    }
+    #user_image{
+        max-width: 250px;
+        height: 200px;
+        
+    }
