@@ -1,9 +1,17 @@
 from django.shortcuts import render, redirect 
 from .models import Message, Comment
 from login_app.models import User
+import tweepy
+from datetime import date, timedelta
 
 
-
+consumer_key= 'Nllt36ILNQs04HHHqYp8U2VgQ'
+consumer_secret= '10NY6qMnhLMOc2vkjOlfgJu96v3Sp4WlrqSA4RcIBdjD9yQvpx'
+access_token= '775701192169127936-HHpPy1eNdngnfLxCmosyfKcNSG27ItS'
+access_token_secret= 'KwcqoiH44KdDpndpjCWFIpVitWtmLa2vQYD0dDKFH6UuW'
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth)
 
 
 def user_page(request, request_session_user_id) :
@@ -34,7 +42,14 @@ def view_wall(request):
 # Create your views here.
 
 def video_wall(request):
+    yesterday = date.today() - timedelta(days=1)
+    tweets = tweepy.Cursor(api.search, q = 'dogs', lang='en', since = yesterday).items(10)
+    urls = []
+    for tweet in tweets:
+        urls.append('https://twitter.com/x/status/' + tweet.id_str)
+
     context= {
+        'urls': urls,
         'all_messages': Message.objects.all()
     }
     return render(request, "animal_wall.html", context)
